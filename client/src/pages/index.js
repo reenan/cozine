@@ -1,7 +1,7 @@
 import Home from './Home/Home';
-import Calendar from './Calendar/Calendar';
+import Schedule from './Schedule/Schedule';
 
 export {
     Home,
-    Calendar
+    Schedule
 }

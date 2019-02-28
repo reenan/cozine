@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import './Calendar.scss';
 
-import { Icon } from '../../pages/shared';
+import { Icon } from '../../shared';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
 moment.locale('pt-BR');
 
-console.log(moment)
 //moment().year(value).month(value).daysInMonth();
 //moment().year(value).month(value).startOf('month').day() => match weekDays
 
