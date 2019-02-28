@@ -2,5 +2,98 @@
 @import '../../../resources/_mixins.scss';
 
 .events {
-    
+    @include box-sizing(border-box);
+    @include box-shadow(0px -10px 20px -5px, rgba($main-color, 0.3));
+    padding: 5px 10px;
+    margin-top: 15px;
+
+    .event {
+        .date {
+            @include vertical-align(top);
+            border-radius: 100%;
+            text-align: center;
+            margin: 0;
+            width: 10%;
+            
+            span {
+                font-size: 10px;
+                color: $main-color;
+                line-height: 25px;
+            }
+        }
+
+        .occurrences {
+            @include vertical-align(top);
+            width: 75%;
+            margin: 5px 0 0 10px;
+            position: relative;
+
+            > ul {
+                .type {
+                    display: block;
+                    // @include vertical-align(top);
+                    // width: 10%;
+                    // text-align: center;
+                    
+                    span {
+                        text-transform: uppercase;
+                        color: $main-color;
+                        font-size: 12px;
+                        margin-left: 5px;
+                    }
+                }
+
+                .recipes {
+                    @include vertical-align(middle);
+                    width: 80%;
+                    margin: 5px 0 0 15px;
+
+                    li {
+                        @include vertical-align(middle);
+                        width: 100%;
+
+                        p {
+                            @include text-overflow(ellipsis);
+                            margin: 0;
+                            font-size: 12px;
+
+                        }
+                     
+                        & + li {
+                            margin-top: 10px;
+                        }
+                    }
+                }
+                
+                & + ul {
+                    margin-top: 10px;
+                }
+            }
+
+            &:before {
+                content: ' ';
+                background-color: $main-color;
+                position: absolute;
+                top: 0px;
+                bottom: 5px;
+                left: -10px;
+                width: 1px;
+                
+            }
+        }
+
+        .actions {
+            @include vertical-align(middle);
+            width: 10%;
+            margin-top: 15px;
+            color: $main-color;
+        }
+
+        & + .event {
+            margin-top: 15px;
+        }
+    }
+    @media screen and (min-width: $tablet-width) {
+        width: 50%;
+    }
 }

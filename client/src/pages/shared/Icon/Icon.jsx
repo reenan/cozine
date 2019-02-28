@@ -14,7 +14,7 @@ export default class Icon extends Component {
         const { icon, onClick, className } = this.props;
 
         return (
-            <span onClick={onClick} className={`icon ${icon} ${className}`} />
+            <span onClick={onClick} className={`icon ${icon} ${className ? className : ''}`} />
         )
     }
 }
