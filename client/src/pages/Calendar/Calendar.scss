@@ -1,0 +1,93 @@
+@import '../../resources/_variables.scss';
+@import '../../resources/_mixins.scss';
+
+.calendar {
+    display: inline-block;
+
+    .header {
+        text-align: center;
+        max-width: 300px;
+        margin: auto;
+
+        .selected-year {
+            margin-bottom: 0;
+            color: $main-color;
+        }
+
+        .selected-month, .icon {
+            @include vertical-align(middle);
+        }
+
+        .selected-month {
+            font-size: 18px;
+            width: 60%;
+        }
+
+        .icon {
+            cursor: pointer;
+            color: $main-color;
+        }
+
+        margin-bottom: 15px;
+
+    }
+
+    ul.weekdays {
+        > li {
+            color: $main-color;
+            font-size: 11px;
+        }
+    }
+
+    ul.month {
+        > li {
+            @include transition(background-color 400ms);
+            border-radius: 15%;
+            position: relative;
+            
+            &:before {
+                @include absolute-fill();
+                content: '';
+                border-radius: 15%;
+            }
+
+            &:not(.disabled):hover {
+                background-color: rgba($main-color, 0.5);
+            }
+
+            &.disabled {
+                color: $medium-gray;
+
+                &:before {
+                    background-color: $soft-gray;
+                }
+            }
+
+            > span {
+                position: relative;
+            }
+        }
+    }
+
+    ul.month,
+    ul.weekdays {
+        width: 100%;
+        margin: auto;
+
+        > li {
+            @include box-sizing(border-box);
+            @include vertical-align(middle);
+    
+            width: calc(100% / 7 - 20px);
+            padding: 5px;
+            margin: 10px;
+            text-align: center;
+            
+        }
+
+    }
+
+    @media screen and (min-width: $tablet-width) {
+        width: 50%;
+    }
+}
