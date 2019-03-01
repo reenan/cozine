@@ -19,13 +19,13 @@
             font-weight: 800;
             color: $main-color;
             border-radius: 80% 40%;
-            padding: 30px 60px;
+            padding: $medium-spacing $large-spacing;
             background-color: $accent-color;
             text-transform: uppercase;
             font-size: 22px;
-            margin-bottom: 15px;
+            margin-bottom: $small-spacing;
             position: relative;
-            top: -60px;
+            top: -$large-spacing;
         }
     }
 }

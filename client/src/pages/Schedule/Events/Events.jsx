@@ -9,44 +9,38 @@ export default class Events extends Component {
 		const events = [
 			{
 				date: '02',
-				occurrences: [
+				data: [
 					{type: 'breakfeast', recipes: ['Iogurte natural', 'Banana', 'Suco de laranja']},
 					{type: 'lunch', recipes: ['Massa ao molho Alfredo']},
 					{type: 'dinner', recipes: ['Lasanha de brócolis']}
 				]
 			}, {
 				date: '07',
-				occurrences: [{type: 'lunch', recipes: ['Nhoque de batata doce']}]
+				data: [{type: 'lunch', recipes: ['Nhoque de batata doce']}]
 			}, {
 				date: '11',
-				occurrences: [{type: 'breakfeast', recipes: ['Oatmeal']}]
+				data: [{type: 'breakfeast', recipes: ['Oatmeal']}]
 			}, {
 				date: '14',
-				occurrences: [{type: 'dinner', recipes: ['Panquecas de legumes']}]
+				data: [{type: 'dinner', recipes: ['Panquecas de legumes']}]
 			},
 		]
 
 
 		return (
-			<div className='events'>
+			<ul className='events'>
 				{
 					events.map((item, index) => {
 						return <Event key={index} event={item} />
 					})
 				}
-			</div>
+			</ul>
 		)
 	}
 }
 
 
 const Event = ({ event }) => {
-
-	/* const ICON_MAP = {
-		'breakfeast': 'coffee',
-		'lunch': 'utensils',
-		'dinner': 'bread-slice',
-	} */
 
 	const MEAL_MAP = {
 		'breakfeast': 'Café da Manhã',
@@ -55,20 +49,48 @@ const Event = ({ event }) => {
 	}
 
 	return (
+		<li className='event'>
+			<span className='date'>{event.date}</span>
+			<ul className='data'>
+				{
+					event.data.map((occurrence, i) => {
+						return (
+							<li key={i}>
+								<p>{MEAL_MAP[occurrence.type]}</p>
+								<ul>
+									{
+										occurrence.recipes.map((recipe, j) => {
+											return (
+												<li>
+													<p>{recipe}</p>
+												</li>
+											)
+										})
+									}
+								</ul>
+							</li>
+						)
+					})
+				}
+			</ul>
+			<Icon icon='arrow-right' />
+		</li>
+	)
+
+	/* return (
 		<div className='event'>
 			<ul>
 				<li className='date'>
 					<span>{event.date}</span>
 				</li>
 
-				<li className='occurrences'>
+				<li className='data'>
 					{
-						event.occurrences.map((occurrence, i) => {
+						event.data.map((occurrence, i) => {
 							return (
 								<ul key={i}>
 									<li className='type'>
 										<span>{MEAL_MAP[occurrence.type]}</span>
-										{/* <Icon icon={ICON_MAP[occurrence.type]} /> */}
 									</li>
 									<ul className='recipes'>
 										{
@@ -92,5 +114,5 @@ const Event = ({ event }) => {
 				</li>
 			</ul>
 		</div>
-	)
+	) */
 }
