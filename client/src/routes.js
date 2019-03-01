@@ -6,11 +6,12 @@ import {
 	Redirect
 } from 'react-router-dom'
 
-import { Home, Schedule } from './pages';
+import { Home, Schedule, Profile } from './pages';
 
 export default (
 	<BrowserRouter>
 		<Switch>
+			<Route path='/' component={Profile} exact />
 			<Route path='/' component={Schedule} exact />
 			<Route path='/' component={Home} exact />
 			
