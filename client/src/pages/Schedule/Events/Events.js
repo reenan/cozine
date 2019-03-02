@@ -28,7 +28,6 @@ export default class Events extends Component {
 			},
 		]
 
-
 		return (
 			<div className='events'>
 				{
