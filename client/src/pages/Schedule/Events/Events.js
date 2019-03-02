@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
+import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../../shared';
 
 import './Events.scss';
 
-export default class Events extends Component {
+class Events extends Component {
 	render() {
 
 		const events = [
@@ -78,3 +79,5 @@ const Event = ({ event }) => {
 		</NavLink>
 	)
 }
+
+export default withRouter(Events);

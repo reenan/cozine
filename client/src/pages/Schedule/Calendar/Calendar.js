@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './Calendar.scss';
-
+import { withRouter } from 'react-router';
 import { Icon } from '../../shared';
+import './Calendar.scss';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -9,8 +9,7 @@ moment.locale('pt-BR');
 
 //moment().year(value).month(value).daysInMonth();
 //moment().year(value).month(value).startOf('month').day() => match weekDays
-
-export default class Calendar extends Component {
+class Calendar extends Component {
 
   constructor(props) {
     super(props);
@@ -22,20 +21,6 @@ export default class Calendar extends Component {
   }
 
   static weekDays = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
-  static months = [
-    'Janeiro', 
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro',
-  ];
 
   prevMonth = () => {
     let { selectedMonth, selectedYear } = this.state;
@@ -78,7 +63,7 @@ export default class Calendar extends Component {
           <p className='selected-year'>{selectedYear}</p>
           
           <Icon onClick={this.prevMonth} icon='arrow-left' />
-          <p className='selected-month'>{Calendar.months[selectedMonth]}</p>
+          <p className='selected-month'>{moment().month(selectedMonth).format('MMMM')}</p>
           <Icon onClick= {this.nextMonth}icon='arrow-right' />
         </div>
 
@@ -156,9 +141,7 @@ class Month extends Component {
   }
 }
 
-
 const WeekDays = ({ weekDays }) => {
-
   return (
     <ul className='weekdays'>
       {
@@ -173,3 +156,5 @@ const WeekDays = ({ weekDays }) => {
     </ul>
   )
 }
+
+export default withRouter(Calendar)

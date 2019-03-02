@@ -75,7 +75,6 @@
         @include transition(background-color 400ms);
         @include absolute-fill(5px);
         content: '';
-
         border-radius: 25%;
         z-index: -1;
       }
