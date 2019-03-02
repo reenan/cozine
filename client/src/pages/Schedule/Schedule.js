@@ -11,7 +11,7 @@ export default class Schedule extends Component {
 		return (
 			<div className='schedule'>
 				{/* <Day /> */}
-				{/* <Calendar /> */}
+				<Calendar />
 				<Events />
 			</div>
 		)
