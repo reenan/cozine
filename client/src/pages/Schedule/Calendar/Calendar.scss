@@ -4,6 +4,11 @@
 .calendar {
     display: inline-block;
     margin-top: $small-spacing;
+    color: $dark-text;
+
+    &.popover {
+        @include box-shadow(0 5px 10px 0, rgba(0, 0, 0, 0.1));
+    }
 
     .header {
         text-align: center;

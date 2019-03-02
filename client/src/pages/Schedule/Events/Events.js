@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import './Events.scss';
 
+import { NavLink } from 'react-router-dom';
 import { Icon } from '../../shared';
+
+import './Events.scss';
 
 export default class Events extends Component {
 	render() {
@@ -28,13 +30,13 @@ export default class Events extends Component {
 
 
 		return (
-			<ul className='events'>
+			<div className='events'>
 				{
 					events.map((item, index) => {
 						return <Event key={index} event={item} />
 					})
 				}
-			</ul>
+			</div>
 		)
 	}
 }
@@ -49,7 +51,7 @@ const Event = ({ event }) => {
 	}
 
 	return (
-		<li className='event'>
+		<NavLink to='/' className='event'>
 			<span className='date'>{event.date}</span>
 			<ul className='data'>
 				{
@@ -61,7 +63,7 @@ const Event = ({ event }) => {
 									{
 										occurrence.recipes.map((recipe, j) => {
 											return (
-												<li>
+												<li key={j}>
 													<p>{recipe}</p>
 												</li>
 											)
@@ -74,45 +76,6 @@ const Event = ({ event }) => {
 				}
 			</ul>
 			<Icon icon='arrow-right' />
-		</li>
+		</NavLink>
 	)
-
-	/* return (
-		<div className='event'>
-			<ul>
-				<li className='date'>
-					<span>{event.date}</span>
-				</li>
-
-				<li className='data'>
-					{
-						event.data.map((occurrence, i) => {
-							return (
-								<ul key={i}>
-									<li className='type'>
-										<span>{MEAL_MAP[occurrence.type]}</span>
-									</li>
-									<ul className='recipes'>
-										{
-											occurrence.recipes.map((recipe, j) => {
-												return (
-													<li>
-														<p>{recipe}</p>
-													</li>
-												)
-											})
-										}
-									</ul>
-								</ul>
-							)
-						})
-					}
-				</li>
-
-				<li className='actions'>
-					<Icon icon='arrow-right' />
-				</li>
-			</ul>
-		</div>
-	) */
 }

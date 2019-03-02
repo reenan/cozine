@@ -1,0 +1,68 @@
+@import '../../../resources/_variables.scss';
+@import '../../../resources/_mixins.scss';
+
+.day {
+
+    .header {
+        ul > li {
+            @include box-sizing(border-box);
+            @include vertical-align(middle);
+            padding: 5px;
+
+            .weekday {
+                font-size: 22px;
+                text-transform: uppercase;
+                margin-bottom: 0;
+            }
+    
+            .month-day {
+                font-size: 16px;
+                text-transform: uppercase;
+                margin-top: 5px;
+            }
+
+            .icon {
+                font-size: 23px;
+                color: $main-color;
+            }
+
+            &:first-child {
+                width: 90%;
+            }
+        }
+    }
+
+
+    .hours {
+        @include box-shadow(0px -10px 10px -5px, rgba($main-color, 0.3));
+
+        > li {
+            padding: 10px 0;
+            border-bottom: 1px solid $soft-gray;
+            font-size: 13px;            
+
+            > span {
+                @include vertical-align(top);
+                
+                margin-right: $small-spacing;
+                padding: 5px;
+                color: $main-color;
+            }
+            
+            > ul {
+                @include vertical-align(top);
+
+                > li {
+                    margin: 0;
+                    background-color: rgba($main-color, 0.5);
+                    padding: 5px 10px;
+                    border-radius: 15px;
+                }
+
+                > li + li {
+                    margin-top: $small-spacing;
+                }
+            }
+        }
+    }
+}
