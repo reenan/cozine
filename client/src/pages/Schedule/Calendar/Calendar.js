@@ -93,12 +93,13 @@ class Month extends Component {
 
   MONTH_SIZE = 6 * 7;
 
-  addLastMonthPaddingDays = (list) => {
+  addLastMonthPaddingDays = () => {
     const { year, month } = this.props;
     let currentMonthFirstDay = moment().year(year).month(month).startOf('month').day();
     let lastMonthDaysCount = moment().year(year).month(month).subtract(1, 'month').daysInMonth();
     let paddingValue = lastMonthDaysCount - currentMonthFirstDay;
 
+    let list = [];
     while (list.length < currentMonthFirstDay) {
       list.push(
         <li key={list.length} className='disabled'>
@@ -106,6 +107,8 @@ class Month extends Component {
         </li>
       )
     }
+
+    return list;
   }
 
   addCurrentMonthDays = (list) => {
@@ -119,6 +122,8 @@ class Month extends Component {
         </li>
       )
     }
+
+    return list;
   }
 
   addNextMonthPaddingDays = (list) => {
@@ -131,14 +136,16 @@ class Month extends Component {
         </li>
       )
     }
+
+    return list;
   }
 
   render() {
     let month = [];
 
-    this.addLastMonthPaddingDays(month);
-    this.addCurrentMonthDays(month);
-    this.addNextMonthPaddingDays(month);
+    month = this.addLastMonthPaddingDays();
+    month = this.addCurrentMonthDays(month);
+    month = this.addNextMonthPaddingDays(month);
 
     return (
       <ul className='month'>

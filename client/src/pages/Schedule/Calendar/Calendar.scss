@@ -76,8 +76,8 @@
 
     ul.month,
     ul.weekdays {
-        width: 100%;
-        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
 
         > li {
             @include box-sizing(border-box);
