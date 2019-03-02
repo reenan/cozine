@@ -9,7 +9,7 @@ export default class TopBar extends Component {
             <div className='top-bar'> 
                 <NavLink to='/Home'>Home</NavLink>
                 <NavLink to='/schedule'>Schedule</NavLink>
-                <NavLink to='/profile'>Profile</NavLink>
+                <NavLink to='/recipes'>Recipes</NavLink>
             </div>
         )
     }
