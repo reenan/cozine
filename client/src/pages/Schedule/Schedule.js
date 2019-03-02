@@ -12,7 +12,7 @@ export default class Schedule extends Component {
 			<div className='schedule'>
 				{/* <Day /> */}
 				<Calendar />
-				<Events />
+				{/* <Events /> */}
 			</div>
 		)
 	}
