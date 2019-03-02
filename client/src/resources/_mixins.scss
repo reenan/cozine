@@ -6,6 +6,15 @@
 	right: $distance;
 }
 
+@mixin absolute-fill-steps($top, $right, $bottom, $left) {
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+
 @mixin transition($args...) {
 	-webkit-transition: $args;
 	-moz-transition: $args;

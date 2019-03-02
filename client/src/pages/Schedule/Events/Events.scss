@@ -3,12 +3,14 @@
 
 .events {
   @include box-shadow(0px -5px 20px -5px, rgba(0, 0, 0, 0.1));
+  display: inline-block;
+  width: 100%;
   margin-top: $small-spacing;
 
   p, span {
     margin: 0;
   }
-  
+
   .event {
     @include transition(box-shadow 400ms);
     display: grid;
@@ -19,12 +21,12 @@
     &:hover {
       @include box-shadow(0px 0px 20px -5px, rgba(0, 0, 0, 0.1));
     }
-    
+
     .date {
       font-size: 14px;
       color: $main-color;
       position: relative;
-      
+
       &:after {
         content: '';
         background-color: $main-color;
@@ -33,10 +35,10 @@
         bottom: 5px;
         left: $medium-spacing;
         width: 1px;
-        
+
       }
     }
-    
+
     .data {
       font-size: 14px;
       > li {
@@ -45,26 +47,22 @@
           color: $main-color;
           margin-bottom: $extra-small-spacing;
         }
-        
+
         > ul > li {
           margin-left: $small-spacing;
           margin-bottom: $extra-small-spacing;
           color: $dark-text;
         }
-        
+
         + li {
           margin-top: $small-spacing;
         }
       }
     }
-    
+
     .icon {
       text-align: center;
       color: $main-color;
     }
-    
-  }
-  @media screen and (min-width: $desktop-width) {
-    width: 50%;
   }
 }
