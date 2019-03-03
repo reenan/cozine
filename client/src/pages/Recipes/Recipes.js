@@ -54,7 +54,7 @@ const Recipe = ({ recipe }) => {
 		<li>
 			<div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
 			<div className='data'>
-				<p className='name'>{recipe.name}</p>
+				<p>{recipe.name}</p>
 				<p className='ingredients'>{recipe.ingredients.join(', ')}</p>
 				
 				<Icon icon='clock' />
