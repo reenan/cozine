@@ -55,7 +55,9 @@ const Recipe = ({ recipe }) => {
 
   return (
     <li>
-      <div className='general'>
+      <div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
+      
+      <div className='content'>
         <p className='name'>{recipe.name}</p>
 
         <div className='tags'>
@@ -63,14 +65,8 @@ const Recipe = ({ recipe }) => {
           <span>Rápido</span>
           <span>Fácil</span>
         </div>
-      </div>
-
-      <div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
       
-      <div className='content'>
-        {/* <p className='ingredients'>{recipe.ingredients.join(', ')}</p> */}
-        
-        <ul>
+        <ul className='actions'>
           <li className='comments'>
             <Icon icon='comments' />
             <span>0 comentários</span>
