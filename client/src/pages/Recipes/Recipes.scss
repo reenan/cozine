@@ -2,4 +2,56 @@
 @import '../../resources/_mixins.scss';
 
 .recipes {
+	padding: 15px;
+	
+	> ul {
+		> li {
+			display: grid;
+			grid-template-columns: auto 5fr;
+			grid-gap: $small-spacing;
+			align-items: center;
+
+			.image {
+				@include aspect-ratio(1, 1);
+				background-size: cover;
+				background-position: center center;
+				border-radius: 100%;
+				width: 20vw;
+				min-width: 75px;
+				max-width: 150px;
+			}
+			
+			.data {
+				overflow: hidden;
+
+				p {
+					margin: 0;
+					margin-bottom: $extra-small-spacing;
+					text-transform: uppercase;
+
+					&.ingredients {
+						@include text-overflow(ellipsis);
+						font-size: 12px;
+						color: $medium-gray;
+					}
+				}
+
+				span {
+					@include vertical-align(middle);
+					margin-top: $extra-small-spacing;
+					font-size: 13px;
+					color: $main-color;
+					text-transform: uppercase;
+
+					&.icon {
+						margin-right: $extra-small-spacing;
+					}
+				}
+			}
+
+			& + li {
+				margin-top: $small-spacing;
+			}
+		}
+	}
 }
