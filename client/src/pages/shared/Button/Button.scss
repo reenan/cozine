@@ -1,0 +1,46 @@
+@import '../../../resources/_variables.scss';
+@import '../../../resources/_mixins.scss';
+
+.button {
+  @include vertical-align(middle);
+  @include transition(background-color 200ms, color 200ms);
+  cursor: pointer;
+  color: $dark-text;
+
+  &.btn-icon {
+    padding: $extra-small-spacing;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+
+    .icon {
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    &:hover {
+      color: $main-color;
+      background-color: rgba($soft-gray, 0.5);
+    }
+    
+    &.active {
+      color: $main-color;
+    }
+  }
+
+  &.btn-text {
+    span {
+      @include transition(color 200ms);
+      @include vertical-align(middle);
+      font-size: 15px;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+
+  
+}

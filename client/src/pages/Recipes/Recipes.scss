@@ -3,79 +3,113 @@
 
 .recipes {
   padding: 15px;
+  display: grid;
+  grid-template-columns: 12fr;
+  grid-gap: $medium-spacing;
   
-  > ul {
-    display: grid;
-    grid-template-columns: 12fr;
-    grid-gap: $medium-spacing;
-
-    > li {
-      @include box-shadow(0 0 20px -3px, rgba(0, 0, 0, 0.1));
-      @include vertical-align(middle);
-      min-width: 0;
-      background: white;
-
-      .image {
-        @include aspect-ratio(4, 2);
-        background-size: cover;
-        background-position: center center;
+  > div {
+    @include box-shadow(0 0 20px -3px, rgba(0, 0, 0, 0.1));
+    @include vertical-align(middle);
+    min-width: 0;
+    background: white;
+    color: $dark-text;
+    
+    .image {
+      @include aspect-ratio(4, 2);
+      background-size: cover;
+      background-position: center center;
+      
+      &:after {
+        @include absolute-fill();
+        content: '';
+        background-color: rgba($dark-text, 0.25);
+      }
+    }
+    
+    .content {
+      padding: $small-spacing;
+      
+      .name {
+        font-size: 18px;
+        margin: 0 0 10px 0;
+      }
+      
+      .description {
+        margin-bottom: $small-spacing;
+        letter-spacing: 0.5px;
         
-        &:after {
-          @include absolute-fill();
-          content: '';
-          background-color: rgba($dark-text, 0.25);
+        p {
+          font-weight: 100;
+          margin: 0;
+          font-size: 14px;
+          color: $medium-gray;
+          line-height: 1.5;
         }
       }
       
-      .content {
-        padding: $small-spacing;
-  
-        .name {
-          font-size: 18px;
-          margin: 0 0 10px 0;
-        }
-        
-        .tags {
-          span {
-            font-size: 10px;
-            text-transform: uppercase;
-            border-radius: 15px;
-            background-color: rgb(226, 226, 192);
-            padding: 5px 10px;
-            
-            & + span {
-              margin-left: $extra-small-spacing;
-            }
+      .tags {
+        span {
+          font-size: 10px;
+          text-transform: uppercase;
+          border-radius: 15px;
+          background-color: rgb(226, 226, 192);
+          padding: 5px 10px;
+          
+          & + span {
+            margin-left: $extra-small-spacing;
           }
-        }
-
-        .actions {
-          margin-top: $small-spacing;
-
-          span {
-            color: $dark-text;
-            font-size: 13px;
-            text-transform: uppercase;
-            
-            &.icon {
-              margin-right: $extra-small-spacing;
-              width: 10%;
-            }
+          
+          &.veggie {
+            background-color: #689e7a;
+          }
+          
+          &.fast {
+            background-color: #dac686;
+          }
+          
+          &.cheap {
+            background-color: #748880;
+          }
+          
+          &.gourmet {
+            background-color: #e2ca7b;
+          }
+          
+          &.easy {
+            background-color: #9ba6e5;
+          }
+          
+          &.untagged {
+            background-color: $soft-gray;
           }
         }
       }
+      
+      .actions {
+        margin-top: $small-spacing;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 14fr 1fr;
+      }
     }
-
-    @media screen and (min-width: $tablet-width) {
-      grid-template-columns: 6fr 6fr;
-
-      .content .name {
+  }
+  
+  @media screen and (min-width: $tablet-width) {
+    grid-template-columns: 6fr 6fr;
+    
+    .content {
+      .description {
+        height: 65px;
+        overflow: hidden;
+      }
+      
+      .name {
         @include text-overflow(ellipsis);
       }
     }
-
-    @media screen and (min-width: $desktop-width) {
-      grid-template-columns: 6fr 6fr 6fr;
-    }
+  }
+  
+  @media screen and (min-width: $desktop-width) {
+    grid-template-columns: 6fr 6fr 6fr;
   }
 }
