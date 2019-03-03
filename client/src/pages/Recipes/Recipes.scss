@@ -2,78 +2,78 @@
 @import '../../resources/_mixins.scss';
 
 .recipes {
-	padding: 15px;
-	
-	> ul {
-		display: grid;
-		grid-template-columns: 12fr;
-		grid-gap: $medium-spacing;
+  padding: 15px;
+  
+  > ul {
+    display: grid;
+    grid-template-columns: 12fr;
+    grid-gap: $medium-spacing;
 
-		> li {
-			@include box-shadow(0 0 20px -3px, rgba(0, 0, 0, 0.1));
-			@include vertical-align(middle);
-			min-width: 0;
-			background: white;
+    > li {
+      @include box-shadow(0 0 20px -3px, rgba(0, 0, 0, 0.1));
+      @include vertical-align(middle);
+      min-width: 0;
+      background: white;
 
-			.general {
-				padding: $small-spacing;
-				color: $dark-text;
-				
-				.name {
-					font-size: 18px;
-					margin: 0 0 10px 0;
-				}
-				
-				.tags {
-					span {
-						font-size: 10px;
-						text-transform: uppercase;
-						border-radius: 15px;
-						background-color: rgb(226, 226, 192);
-						padding: 5px 10px;
-						
-						& + span {
-							margin-left: $extra-small-spacing;
-						}
-					}
-				}
-			}
-			
-			.image {
-				@include aspect-ratio(4, 2);
-				margin-top: $extra-small-spacing;
-				background-size: cover;
-				background-position: center center;
-				
-				&:after {
-					@include absolute-fill();
-					content: '';
-					background-color: rgba($dark-text, 0.25);
-				}
-			}
-			
-			.content {
-				padding: $small-spacing;
-				
-				span {
-					color: $dark-text;
-					font-size: 13px;
-					text-transform: uppercase;
-					
-					&.icon {
-						margin-right: $extra-small-spacing;
-						width: 10%;
-					}
-				}
-			}
-		}
+      .general {
+        padding: $small-spacing;
+        color: $dark-text;
+        
+        .name {
+          font-size: 18px;
+          margin: 0 0 10px 0;
+        }
+        
+        .tags {
+          span {
+            font-size: 10px;
+            text-transform: uppercase;
+            border-radius: 15px;
+            background-color: rgb(226, 226, 192);
+            padding: 5px 10px;
+            
+            & + span {
+              margin-left: $extra-small-spacing;
+            }
+          }
+        }
+      }
+      
+      .image {
+        @include aspect-ratio(4, 2);
+        margin-top: $extra-small-spacing;
+        background-size: cover;
+        background-position: center center;
+        
+        &:after {
+          @include absolute-fill();
+          content: '';
+          background-color: rgba($dark-text, 0.25);
+        }
+      }
+      
+      .content {
+        padding: $small-spacing;
+        
+        span {
+          color: $dark-text;
+          font-size: 13px;
+          text-transform: uppercase;
+          
+          &.icon {
+            margin-right: $extra-small-spacing;
+            width: 10%;
+          }
+        }
+      }
+    }
 
-		@media screen and (min-width: $tablet-width) {
-			grid-template-columns: 6fr 6fr;
+    @media screen and (min-width: $tablet-width) {
+      grid-template-columns: 6fr 6fr;
 
-			.general .name {
-				@include text-overflow(ellipsis);
-			}
-		}
-	}
+      .general .name {
+        @include text-overflow(ellipsis);
+      }
+    }
+  }
 }
