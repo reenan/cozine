@@ -96,7 +96,7 @@ const Recipe = ({ recipe }) => {
                     {TAG_MAP[tag]}
                   </span>
                 )
-              }) : <span className='untagged'>Untagged</span>
+              }) : <span className='untagged'>Sem categoria</span>
           }
         </div>
       
