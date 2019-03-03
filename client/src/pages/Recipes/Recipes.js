@@ -16,19 +16,22 @@ class Recipes extends Component {
 				name: 'Ragu de shimeji',
 				image: ragu,
 				time: '20 minutos',
-				ingredients: ['Shimeji', 'Vinho tinto', 'Polentina', 'Água', 'Sal'],
+				description: '',
+				//ingredients: ['Shimeji', 'Vinho tinto', 'Polentina', 'Água', 'Sal'],
 			},
 			{
 				name: 'Massa ao molho Alfredo nome comprido para linebreak',
 				image: alfredo,
 				time: '25 minutos',
-				ingredients: ['Macarrão penne', 'Creme de ricota', 'Molho branco', 'Sal', 'Pimenta do reino'],
+				description: '',
+				//ingredients: ['Macarrão penne', 'Creme de ricota', 'Molho branco', 'Sal', 'Pimenta do reino'],
 			},
 			{
 				name: 'Lasanha de brócolis',
 				image: lasanha,
 				time: '1 hora',
-				ingredients: ['Massa de lasanha', 'Brócolis', 'Tomate', 'Creme de leite', 'Molho branco'],
+				description: '',
+				//ingredients: ['Massa de lasanha', 'Brócolis', 'Tomate', 'Creme de leite', 'Molho branco'],
 			}
 		]
 
@@ -52,13 +55,31 @@ const Recipe = ({ recipe }) => {
 
 	return (
 		<li>
+			<div className='general'>
+				<p className='name'>{recipe.name}</p>
+
+				<div className='tags'>
+					<span>Vegetariano</span>
+					<span>Rápido</span>
+					<span>Fácil</span>
+				</div>
+			</div>
+
 			<div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
-			<div className='data'>
-				<p>{recipe.name}</p>
-				<p className='ingredients'>{recipe.ingredients.join(', ')}</p>
+			
+			<div className='content'>
+				{/* <p className='ingredients'>{recipe.ingredients.join(', ')}</p> */}
 				
-				<Icon icon='clock' />
-				<span>{recipe.time}</span>
+				<ul>
+					<li className='comments'>
+						<Icon icon='comments' />
+						<span>0 comentários</span>
+					</li>
+					<li className='time'>
+						<Icon icon='clock' />
+						<span>{recipe.time}</span>
+					</li>
+				</ul>
 			</div>
 		</li>
 	)

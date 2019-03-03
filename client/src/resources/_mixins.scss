@@ -125,13 +125,15 @@
     background: linear-gradient($position, $colorStart, $colorEnd);
 }
 
-@mixin line-clamp($numLines: 1, $lineHeight: 1.7) {
+@mixin text-clamp($lines: 2, $line-height: false) {
 	overflow: hidden;
-	text-overflow: -o-ellipsis-lastline;
-	text-overflow: ellipsis;
-	display: block;
 	display: -webkit-box;
-	-webkit-line-clamp: $numLines;
 	-webkit-box-orient: vertical;
-	max-height: $numLines * $lineHeight + unquote('em');
+	-webkit-line-clamp: $lines;
+
+	// Fallback for non-Webkit browsers
+	// (won't show `…` at the end of the block)
+	@if $line-height {
+			max-height: $line-height * $lines * 1px;
+	}
 }
