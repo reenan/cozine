@@ -8,7 +8,7 @@ class Button extends Component {
     const { children, className } = this.props;
 
     return (
-      <div className={`button ${className ? className : null}`}>
+      <div className={`button ${className ? className : ''}`}>
         {children}
       </div>
     )
@@ -20,7 +20,7 @@ class IconButton extends Button {
     const { icon, className } = this.props;
 
     return (
-      <Button className={`btn-icon ${className ? className : null}`}>
+      <Button className={`btn-icon ${className ? className : ''}`}>
         <Icon icon={icon} />
       </Button>
     )
@@ -32,7 +32,7 @@ class TextButton extends Button {
     const { text, className } = this.props;
 
     return (
-      <Button className={`btn-text ${className ? className : null}`}>
+      <Button className={`btn-text ${className ? className : ''}`}>
         <span>{text}</span>
       </Button>
     )

@@ -108,7 +108,7 @@ const Recipe = ({ recipe }) => {
           </div>
 
           <div className={`fav`}>
-            <IconButton className={`${recipe.fav ? 'active' : null}`} icon='heart' />
+            <IconButton className={`${recipe.fav ? 'active' : ''}`} icon='heart' />
           </div>
         </div>
       </div>
