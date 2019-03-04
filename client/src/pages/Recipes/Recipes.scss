@@ -52,7 +52,6 @@
           font-size: 10px;
           text-transform: uppercase;
           border-radius: 15px;
-          background-color: rgb(226, 226, 192);
           padding: 5px 10px;
           
           & + span {
@@ -60,7 +59,7 @@
           }
           
           &.veggie {
-            background-color: #689e7a;
+            background-color: #b9dec5;
           }
           
           &.fast {
@@ -68,7 +67,7 @@
           }
           
           &.cheap {
-            background-color: #748880;
+            background-color: #ebd1ef;
           }
           
           &.gourmet {

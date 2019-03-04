@@ -102,7 +102,7 @@ const Recipe = ({ recipe }) => {
       
         <div className='actions'>
           <div className='buttons'>
-            <NavLink to='/'>
+            <NavLink to='/recipe'>
               <TextButton text='Ver mais' />
             </NavLink>
           </div>
