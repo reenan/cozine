@@ -83,9 +83,7 @@ const Recipe = ({ recipe }) => {
       <div className='content'>
         <p className='name'>{recipe.name}</p>
         
-        <div className='description'>
-          <p>{recipe.description ? recipe.description : 'Sem descrição'}</p>
-        </div>
+        <p className='description'>{recipe.description ? recipe.description : 'Sem descrição'}</p>
         
         <div className='tags'>
           {

@@ -15,7 +15,7 @@ class Recipe extends Component {
       fav: true,
       time: '1 hora',
       tags: ['gourmet'],
-      description: '',
+      description: 'Você que ama massas, não pode perder essa receita de lasanha de brócolis e molho branco! Fica deliciosa e é superfácil de fazer!',
       serving: {
         type: 'people',
         amount: 3
@@ -54,7 +54,7 @@ class Recipe extends Component {
         <div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
 
         <div className='content'>
-          <p>{recipe.name}</p>
+          <p className='title'>{recipe.name}</p>
 
           <ul className='info'>
             <li className='serving'>
@@ -66,6 +66,8 @@ class Recipe extends Component {
               <span>{recipe.time}</span>
             </li>
           </ul>
+
+          <p className='description'>{recipe.description ? recipe.description : 'Sem descrição'}</p>
 
           <div className='ingredients'>
             <p>Ingredientes</p>

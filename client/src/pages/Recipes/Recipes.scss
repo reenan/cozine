@@ -35,16 +35,12 @@
       }
       
       .description {
-        margin-bottom: $small-spacing;
         letter-spacing: 0.5px;
-        
-        p {
-          font-weight: 100;
-          margin: 0;
-          font-size: 14px;
-          color: $medium-gray;
-          line-height: 1.5;
-        }
+        font-weight: 100;
+        margin: 0 0 $small-spacing 0;
+        font-size: 14px;
+        color: $medium-gray;
+        line-height: 1.5;
       }
       
       .tags {
