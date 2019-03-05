@@ -24,6 +24,11 @@
       margin: 0 0 $small-spacing 0;
       font-size: 24px;
     }
+
+    .subtitle {
+      font-size: 18px; 
+      margin: 0 0 $small-spacing 0;
+    }
     
     .info {
 
@@ -52,16 +57,10 @@
     }
 
     .ingredients {
-      margin-top: $medium-spacing;
-
-      p {
-        font-size: 18px; 
-        margin: 0 0 $small-spacing 0;
-      }
+      margin: $medium-spacing 0;
 
       ul {
         li {
-
           span {
             text-transform: lowercase;
             font-size: 13px;
@@ -73,6 +72,21 @@
           + li {
             margin-top: $extra-small-spacing;
           }
+        }
+      }
+    }
+
+    .nutritional-values {
+      ul > li {
+        p, span {
+          @include vertical-align(bottom);
+          margin: 0;
+          font-size: 14px;
+        }
+
+        p + span {
+          font-size: 12px;
+          margin-left: $extra-small-spacing;
         }
       }
     }

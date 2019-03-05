@@ -70,7 +70,7 @@ class Recipe extends Component {
           <p className='description'>{recipe.description ? recipe.description : 'Sem descrição'}</p>
 
           <div className='ingredients'>
-            <p>Ingredientes</p>
+            <p className='subtitle'>Ingredientes</p>
             <ul>
               {
                 recipe.ingredients.map((ingredient, index) => {
@@ -82,6 +82,29 @@ class Recipe extends Component {
                   )
                 })
               }
+            </ul>
+          </div>
+
+          <div className='nutritional-values'>
+            <p className='subtitle'>Valores nutricionais</p>
+
+            <ul>
+              <li>
+                <p>Carbohydrates</p>
+                <span>120g</span>
+              </li>
+              <li>
+                <p>Protein</p>
+                <span>120g</span>
+              </li>
+              <li>
+                <p>Fat</p>
+                <span>120g</span>
+              </li>
+              <li>
+                <p>Vitamins and Minerals</p>
+                <span>120g</span>
+              </li>
             </ul>
           </div>
         </div>
