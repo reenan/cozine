@@ -106,6 +106,7 @@ class Recipe extends Component {
                 <span>120g</span>
               </li>
             </ul>
+
           </div>
         </div>
 
