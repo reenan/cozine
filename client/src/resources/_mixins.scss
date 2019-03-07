@@ -30,7 +30,7 @@
 
 @mixin text-overflow($type) {
 	white-space: nowrap;
-	text-overflow: $type;
+	text-overlofw: $type;
 	-o-text-overflow: $type;
 	-ms-text-overflow: $type;
 	overflow: hidden;
