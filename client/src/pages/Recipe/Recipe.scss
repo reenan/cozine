@@ -82,8 +82,17 @@
         display: grid;
         grid-template-columns: 6fr 6fr;
         grid-gap: $small-spacing;
-        
         > li {
+
+          &.with-inner {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            
+            ul {
+              display: grid;
+              grid-template-columns: repeat(7, 1fr);
+            }
+          }
 
           svg {
             @include vertical-align(top);
@@ -101,10 +110,6 @@
           
           .amount {
             font-size: 12px;
-          }
-
-          .inner {
-            margin-left: $small-spacing;
           }
         }
       }

@@ -7,6 +7,37 @@ import { Icon } from '../shared';
 import lasanha from '../../resources/images/lasanha.jpg';
 import './Recipe.scss';
 
+const RECOMENDED_NUTRIENTS_AMOUNT = {
+  calories: 2000,
+  fat: 65,
+  satured: 20,
+  cholesterol: 300,
+  carbohydrate: 300,
+  calcium: 1100,
+  protein: 50,
+  iron: 14,
+  sodium: 2400,
+  potassium: 4700,
+}
+
+const NUTRIENT_MAP = {
+  calories: 'Calorias',
+  fat: 'Gorduras',
+  satured: 'Saturada',
+  trans: 'Trans',
+  cholesterol: 'Colesterol',
+  carbohydrate: 'Carboidratos',
+  protein: 'Proteínas',
+  vitamin: 'Vitaminas',
+  a: 'A',
+  c: 'C',
+  minerals: 'Minerais',
+  calcium: 'Cálcio',
+  iron: 'Ferro',
+  sodium: 'Sódio',
+  potassium: 'Potássio',
+}
+
 class Recipe extends Component {
 
   render() {
@@ -48,38 +79,6 @@ class Recipe extends Component {
           { name: 'potassium', amount: 1041, unit: 'milligrams', },
         ]},
       ],
-    }
-
-    const RECOMENDED_NUTRIENTS_AMOUNT = {
-      calories: 2000,
-      fat: 65,
-      satured: 20,
-      cholesterol: 300,
-      carbohydrate: 300,
-      calcium: 1100,
-      protein: 50,
-      iron: 14,
-      sodium: 2400,
-      potassium: 4700,
-      trans: 0,
-    }
-
-    const NUTRIENT_MAP = {
-      calories: 'Calorias',
-      fat: 'Gorduras',
-      satured: 'Saturada',
-      trans: 'Trans',
-      cholesterol: 'Colesterol',
-      carbohydrate: 'Carboidratos',
-      protein: 'Proteínas',
-      vitamin: 'Vitaminas',
-      a: 'A',
-      c: 'C',
-      minerals: 'Minerais',
-      calcium: 'Cálcio',
-      iron: 'Ferro',
-      sodium: 'Sódio',
-      potassium: 'Potássio',
     }
 
     const SERVING_ICON_MAP = {
@@ -159,72 +158,40 @@ class Recipe extends Component {
 }
 
 const NutrientItem = ({ nutrient }) => {
-  const RECOMENDED_NUTRIENTS_AMOUNT = {
-    calories: 2000,
-    fat: 65,
-    satured: 20,
-    cholesterol: 300,
-    carbohydrate: 300,
-    calcium: 1100,
-    protein: 50,
-    iron: 14,
-    sodium: 2400,
-    potassium: 4700,
-  }
-
-  const NUTRIENT_MAP = {
-    calories: 'Calorias',
-    fat: 'Gorduras',
-    satured: 'Saturada',
-    trans: 'Trans',
-    cholesterol: 'Colesterol',
-    carbohydrate: 'Carboidratos',
-    protein: 'Proteínas',
-    vitamin: 'Vitaminas',
-    a: 'A',
-    c: 'C',
-    minerals: 'Minerais',
-    calcium: 'Cálcio',
-    iron: 'Ferro',
-    sodium: 'Sódio',
-    potassium: 'Potássio',
-  }
 
   return (
-    <li>
+    <li className={`${nutrient.items ? 'with-inner' : ''}`}>
       <span className='name'>{NUTRIENT_MAP[nutrient.name]}</span>
-      
       <span className='amount'>{formatNutrientAmount(nutrient.amount, nutrient.unit)}</span>
+      
       {
-        nutrient.amount ?
-          nutrient.unit === 'percentage' ?
-            <Line percent={nutrient.amount} /> :
-            <Line percent={percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name])} /> :
+        nutrient.items ?
+          <NutientItemInner nutrient={nutrient} /> :
+          nutrient.amount ?
+            nutrient.unit === 'percentage' ?
+              <Line percent={nutrient.amount} /> :
+              <Line percent={percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name])} /> :
             null
       }
 
-      {
-        nutrient.items !== undefined ?
-          <ul className='inner'>
-            {
-              nutrient.items.map((nutrientItem, j) => {
-                return (
-                  <li key={j}>
-                    <span className='name'>{NUTRIENT_MAP[nutrientItem.name]}</span>
-                    {
-                      nutrientItem.amount ?
-                        nutrientItem.unit === 'percentage' ?
-                          <Line percent={nutrientItem.amount} /> :
-                          <Line percent={percentage(nutrientItem.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrientItem.name])} /> :
-                          null
-                    }
-                  </li>
-                )
-              })
-            }
-          </ul> : null
-      }
     </li>
+  )
+}
+
+const NutientItemInner = ({ nutrient }) => {
+  return (
+    <ul className='inner'>
+      {
+        nutrient.items.map((nutrientItem, j) => {
+          return (
+            <li key={j}>
+              <span className='name'>{NUTRIENT_MAP[nutrientItem.name]}</span>
+              <span className='amount'>{formatNutrientAmount(nutrientItem.amount, nutrientItem.unit)}</span>
+            </li>
+          )
+        })
+      }
+    </ul>
   )
 }
 
