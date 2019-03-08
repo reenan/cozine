@@ -90,7 +90,26 @@
             
             ul {
               display: grid;
-              grid-template-columns: repeat(7, 1fr);
+              grid-gap: $extra-small-spacing;
+              grid-template-columns: repeat(3, 1fr);
+
+              > li {
+                padding: $extra-small-spacing $small-spacing;
+                background-color: $soft-gray;
+                position: relative;
+
+                .progress-bar {
+                  @include absolute-fill();
+                  background-color: $medium-gray;
+                  z-index: 1;
+                }
+
+                span {
+                  position: relative;
+                  z-index: 2;
+                  font-size: 10px;
+                }
+              }
             }
           }
 

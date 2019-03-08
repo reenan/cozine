@@ -179,12 +179,15 @@ const NutrientItem = ({ nutrient }) => {
 }
 
 const NutientItemInner = ({ nutrient }) => {
+
   return (
     <ul className='inner'>
       {
         nutrient.items.map((nutrientItem, j) => {
+          const amountPercentage = nutrientItem.unit === 'percentage' ? nutrientItem.amount : percentage(nutrientItem.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrientItem.name]);
           return (
             <li key={j}>
+              <span className='progress-bar' style={{width: `${amountPercentage}%`}} />
               <span className='name'>{NUTRIENT_MAP[nutrientItem.name]}</span>
               <span className='amount'>{formatNutrientAmount(nutrientItem.amount, nutrientItem.unit)}</span>
             </li>
