@@ -4,50 +4,50 @@
 .recipe {
   position: relative;
   color: $dark-text;
-  
+
   .image {
     @include aspect-ratio(16, 9);
     background-size: cover;
     background-position: center center;
-    
+
     &:after {
       @include absolute-fill();
       content: '';
       background-color: rgba($dark-text, 0.25);
     }
   }
-  
+
   .content {
     padding: $medium-spacing $small-spacing;
-    
+
     .title {
       font-size: 24px;
       margin: 0 0 $small-spacing 0;
     }
-    
+
     .subtitle {
-      font-size: 18px; 
+      font-size: 18px;
       margin: 0 0 $small-spacing 0;
     }
-    
+
     .info {
-      
+
       li {
         @include vertical-align(middle);
         color: $medium-gray;
         font-weight: 100;
         font-size: 13px;
-        
+
         .icon {
           margin-right: $extra-small-spacing;
         }
-        
+
         & + li {
           margin-left: $medium-spacing;
         }
       }
     }
-    
+
     .description {
       letter-spacing: 0.5px;
       font-weight: 100;
@@ -55,16 +55,16 @@
       font-size: 14px;
       line-height: 1.5;
     }
-    
+
     .ingredients {
       margin: $medium-spacing 0;
-      
+
       ul {
         li {
           span {
             text-transform: lowercase;
             font-size: 13px;
-            
+
             + span {
               margin-left: $extra-small-spacing;
             }
@@ -75,20 +75,26 @@
         }
       }
     }
-    
+
     .nutritional-values {
-      
+
       .nutrients {
         display: grid;
         grid-template-columns: 6fr 6fr;
         grid-gap: $small-spacing;
+
+        .rc-progress-line-path {
+          stroke: $success-color;
+        }
+
         > li {
 
           &.with-inner {
             grid-column-start: 1;
             grid-column-end: 3;
-            
+
             ul {
+              margin-top: $extra-small-spacing;
               display: grid;
               grid-gap: $extra-small-spacing;
               grid-template-columns: repeat(3, 1fr);
@@ -100,7 +106,7 @@
 
                 .progress-bar {
                   @include absolute-fill();
-                  background-color: $medium-gray;
+                  background-color: rgba($success-color, 0.3);
                   z-index: 1;
                 }
 
@@ -108,6 +114,13 @@
                   position: relative;
                   z-index: 2;
                   font-size: 10px;
+                }
+
+                &.trans {
+
+                  .progress-bar {
+                    background-color: rgba($main-color, 0.3);
+                  }
                 }
               }
             }
@@ -117,7 +130,7 @@
             @include vertical-align(top);
             margin-top: $extra-small-spacing;
           }
-          
+
           span {
             @include vertical-align(middle);
           }
@@ -126,7 +139,7 @@
             font-size: 13px;
             margin-right: $extra-small-spacing;
           }
-          
+
           .amount {
             font-size: 12px;
           }

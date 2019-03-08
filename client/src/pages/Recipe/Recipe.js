@@ -54,9 +54,9 @@ class Recipe extends Component {
       },
       ingredients: [
         { name: 'Massa de lasanha', amount: '600gr', },
-        { name: 'Brócolis', amount: '1', }, 
-        { name: 'Tomate', amount: '3', }, 
-        { name: 'Creme de leite', amount: '1', }, 
+        { name: 'Brócolis', amount: '1', },
+        { name: 'Tomate', amount: '3', },
+        { name: 'Creme de leite', amount: '1', },
         { name: 'Molho branco', amount: '300ml', },
       ],
       nutrients: [
@@ -96,7 +96,7 @@ class Recipe extends Component {
         plural: 'porções',
       }
     }
-      
+
     let serving = recipe.serving.amount === 1 ?
       SERVING_TYPE_MAP[recipe.serving.type].singular :
       SERVING_TYPE_MAP[recipe.serving.type].plural;
@@ -163,14 +163,14 @@ const NutrientItem = ({ nutrient }) => {
     <li className={`${nutrient.items ? 'with-inner' : ''}`}>
       <span className='name'>{NUTRIENT_MAP[nutrient.name]}</span>
       <span className='amount'>{formatNutrientAmount(nutrient.amount, nutrient.unit)}</span>
-      
+
       {
         nutrient.items ?
           <NutientItemInner nutrient={nutrient} /> :
           nutrient.amount ?
             nutrient.unit === 'percentage' ?
-              <Line percent={nutrient.amount} /> :
-              <Line percent={percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name])} /> :
+              <Line strokeWidth={2} strokeColor='#df897d' percent={nutrient.amount} /> :
+              <Line strokeWidth={2} strokeColor='#df897d' percent={percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name])} /> :
             null
       }
 
@@ -186,7 +186,7 @@ const NutientItemInner = ({ nutrient }) => {
         nutrient.items.map((nutrientItem, j) => {
           const amountPercentage = nutrientItem.unit === 'percentage' ? nutrientItem.amount : percentage(nutrientItem.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrientItem.name]);
           return (
-            <li key={j}>
+            <li className={`${nutrientItem.name}`} key={j}>
               <span className='progress-bar' style={{width: `${amountPercentage}%`}} />
               <span className='name'>{NUTRIENT_MAP[nutrientItem.name]}</span>
               <span className='amount'>{formatNutrientAmount(nutrientItem.amount, nutrientItem.unit)}</span>
