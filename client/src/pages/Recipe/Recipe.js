@@ -46,7 +46,7 @@ class Recipe extends Component {
       image: lasanha,
       fav: true,
       time: '1 hora',
-      tags: ['gourmet', 'fast', 'cheap', 'veggie', 'easy', 'untagged'],
+      tags: ['gourmet'],
       description: 'Você que ama massas, não pode perder essa receita de lasanha de brócolis e molho branco! Fica deliciosa e é superfácil de fazer!',
       serving: {
         type: 'people',
@@ -63,7 +63,7 @@ class Recipe extends Component {
         { name: 'calories', amount: 602, unit: 'kcal'},
         { name: 'cholesterol', amount: 166, unit: 'milligrams', },
         { name: 'carbohydrate', amount: 35, unit: 'grams', },
-        { name: 'protein', amount: 44, unit: 'grams', },
+        { name: 'protein', amount: 90, unit: 'grams', },
         { name: 'fat', amount: 32, unit: 'grams', items: [
           { name: 'satured', amount: 15, unit: 'grams', },
           { name: 'trans', amount: 0.3, unit: 'grams', },
@@ -168,8 +168,38 @@ class Recipe extends Component {
   }
 }
 
-const NutrientItem = ({ nutrient }) => {
+function getNutrientLine(nutrient) {
+  let percentageAmount = 0;
 
+  if (nutrient.unit === 'percentage') {
+    percentageAmount = nutrient.amount;
+  } else {
+    percentageAmount = percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name]);
+  }
+
+  if (percentageAmount <= 100) {
+    return (
+      <Line
+        strokeWidth={2}
+        percent={percentageAmount} />
+    )
+  } else {
+    let maxValue = Math.max(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name]);
+    let minValue = Math.min(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name]);
+    
+    percentageAmount = percentage(minValue, maxValue);
+    let percentageDiff = 100 - percentageAmount;
+
+    return (
+      <Line
+        strokeWidth={2}
+        percent={[percentageAmount, percentageDiff]} />
+    )
+  }
+}
+
+const NutrientItem = ({ nutrient }) => {
+  
   return (
     <li className={`${nutrient.items ? 'with-inner' : ''}`}>
       <span className='name'>{NUTRIENT_MAP[nutrient.name]}</span>
@@ -179,10 +209,7 @@ const NutrientItem = ({ nutrient }) => {
         nutrient.items ?
           <NutientItemInner nutrient={nutrient} /> :
           nutrient.amount ?
-            nutrient.unit === 'percentage' ?
-              <Line strokeWidth={2} strokeColor='#df897d' percent={nutrient.amount} /> :
-              <Line strokeWidth={2} strokeColor='#df897d' percent={percentage(nutrient.amount, RECOMENDED_NUTRIENTS_AMOUNT[nutrient.name])} /> :
-            null
+            getNutrientLine(nutrient) : null
       }
 
     </li>
