@@ -1,0 +1,44 @@
+@import '../../../resources/_variables.scss';
+@import '../../../resources/_mixins.scss';
+
+div.input {
+  font-size: 14px;
+  position: relative;
+
+  input {
+    @include transition(border 400ms);
+    @include box-sizing(border-box);
+
+    display: block;
+    outline: 0;
+    width: 100%;
+    border: none;
+    font-size: 13px;
+    height: 20px;
+    color: $dark-text;
+    border-bottom: 1px solid rgba($dark-text, 0.2);
+    background: transparent;
+    padding: 0 $extra-small-spacing;
+    
+    &:focus {
+      border-bottom: 1px solid rgba($dark-text, 0.5);
+    }
+    
+    &:valid, &:focus, &:-webkit-autofill {
+      & + label {
+        font-size: 11px;
+        color: $main-color;
+        top: -13px;
+      }
+    }
+  }
+  
+  label {
+    @include transition(all 400ms);
+    color: $medium-gray;
+    font-size: 13px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+  }
+}

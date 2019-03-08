@@ -11,6 +11,7 @@ export default class TopBar extends Component {
                 <NavLink to='/schedule'>Schedule</NavLink>
                 <NavLink to='/recipes'>Recipes</NavLink>
                 <NavLink to='/recipe'>Recipe</NavLink>
+                <NavLink to='/profile'>Profile</NavLink>
             </div>
         )
     }

@@ -216,6 +216,7 @@ const NutrientItem = ({ nutrient }) => {
   )
 }
 
+/* Make those tags expandable: show only title and expand to show details when clicked */
 const NutientItemInner = ({ nutrient }) => {
 
   return (

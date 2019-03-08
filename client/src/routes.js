@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { TopBar } from './pages/shared';
-import { Home, Schedule, Recipes, Recipe } from './pages';
+import { Home, Schedule, Recipes, Recipe, Profile } from './pages';
 
 export default (
 	<BrowserRouter>
@@ -17,6 +17,7 @@ export default (
 			<Route path='/schedule' component={Schedule} exact />
 				<Route path='/recipes' component={Recipes} exact />
 				<Route path='/recipe' component={Recipe} exact />
+				<Route path='/profile' component={Profile} exact />
 				<Route path='/' component={Home} exact />
 				
 				<Redirect from='*' to='/' />

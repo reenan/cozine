@@ -5,18 +5,18 @@
   @include vertical-align(middle);
   @include transition(background-color 200ms, color 200ms);
   cursor: pointer;
-  color: $dark-text;
+  color: rgba($dark-text, 0.5);
 
   &.btn-icon {
-    padding: $extra-small-spacing;
+    padding: 10px;
     border-radius: 100%;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     text-align: center;
 
     .icon {
       font-size: 22px;
-      line-height: 30px;
     }
 
     &:hover {

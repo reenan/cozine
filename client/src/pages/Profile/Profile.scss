@@ -1,0 +1,43 @@
+@import '../../resources/_variables.scss';
+@import '../../resources/_mixins.scss';
+
+.profile {
+  padding: $small-spacing;
+  .meals {
+    ul {
+      margin-top: $medium-spacing;
+
+      li {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 0.1fr 0.1fr;
+        grid-gap: $extra-small-spacing;
+
+        .input {
+          margin-top: $extra-small-spacing;
+        }
+
+        > div {
+          text-align: center;
+        }
+
+        + li {
+          margin-top: $small-spacing;
+        }
+      }
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin: 0 0 $small-spacing 0;
+    }
+    
+    .description {
+      letter-spacing: 0.5px;
+      font-weight: 100;
+      margin: $small-spacing 0 $extra-small-spacing 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
