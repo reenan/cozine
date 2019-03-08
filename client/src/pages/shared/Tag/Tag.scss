@@ -1,0 +1,35 @@
+@import '../../../resources/_variables.scss';
+@import '../../../resources/_mixins.scss';
+
+span.tag {
+    @include vertical-align(middle);
+
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    padding: 5px 10px;
+    
+    &.veggie {
+    background-color: #b9dec5;
+    }
+    
+    &.fast {
+    background-color: #dac686;
+    }
+    
+    &.cheap {
+    background-color: #ebd1ef;
+    }
+    
+    &.gourmet {
+    background-color: #cca219;
+    }
+    
+    &.easy {
+    background-color: #9ba6e5;
+    }
+    
+    &.untagged {
+    background-color: $soft-gray;
+    }
+}

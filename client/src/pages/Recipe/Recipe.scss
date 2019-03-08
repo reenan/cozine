@@ -30,6 +30,17 @@
       margin: 0 0 $small-spacing 0;
     }
 
+    .tags {
+      margin-bottom: $small-spacing;
+      margin-left: -$extra-small-spacing;
+      margin-top: -$extra-small-spacing;
+
+      .tag {
+        margin-left: $extra-small-spacing;
+        margin-top: $extra-small-spacing;
+      }
+    }
+
     .info {
 
       li {
@@ -103,6 +114,8 @@
                 padding: $extra-small-spacing $small-spacing;
                 background-color: $soft-gray;
                 position: relative;
+                border-radius: 15px;
+                overflow: hidden;
 
                 .progress-bar {
                   @include absolute-fill();

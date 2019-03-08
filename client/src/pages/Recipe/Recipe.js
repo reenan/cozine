@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Line } from 'rc-progress';
 import { withRouter } from 'react-router-dom';
-import { Icon } from '../shared';
+import { Icon, Tag } from '../shared';
 
 import lasanha from '../../resources/images/lasanha.jpg';
 import './Recipe.scss';
@@ -46,7 +46,7 @@ class Recipe extends Component {
       image: lasanha,
       fav: true,
       time: '1 hora',
-      tags: ['gourmet'],
+      tags: ['gourmet', 'fast', 'cheap', 'veggie', 'easy', 'untagged'],
       description: 'Você que ama massas, não pode perder essa receita de lasanha de brócolis e molho branco! Fica deliciosa e é superfácil de fazer!',
       serving: {
         type: 'people',
@@ -107,6 +107,17 @@ class Recipe extends Component {
 
         <div className='content'>
           <p className='title'>{recipe.name}</p>
+
+          <div className='tags'>
+            {
+              recipe.tags.length ? 
+                recipe.tags.map((tag, index) => {
+                  return (
+                    <Tag key={index} tag={tag} />
+                  )
+                }) : <Tag />
+            }
+          </div>
 
           <ul className='info'>
             <li className='serving'>

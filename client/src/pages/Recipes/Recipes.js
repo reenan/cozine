@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, NavLink } from 'react-router-dom';
 
-import { IconButton, TextButton } from '../shared';
+import { IconButton, TextButton, Tag } from '../shared';
 
 
 import './Recipes.scss';
@@ -68,14 +68,6 @@ class Recipes extends Component {
 
 const Recipe = ({ recipe }) => {
 
-  const TAG_MAP = {
-    veggie: 'Vegetariano',
-    fast: 'Rápido',
-    cheap: 'Barato', 
-    gourmet: 'Gourmet', 
-    easy: 'Fácil', 
-  }
-
   return (
     <div>
       <div className='image' style={{backgroundImage: `url(${recipe.image}`}} />
@@ -90,11 +82,9 @@ const Recipe = ({ recipe }) => {
             recipe.tags.length ? 
               recipe.tags.map((tag, index) => {
                 return (
-                  <span key={index} className={tag}>
-                    {TAG_MAP[tag]}
-                  </span>
+                  <Tag key={index} tag={tag} />
                 )
-              }) : <span className='untagged'>Sem categoria</span>
+              }) : <Tag />
           }
         </div>
       

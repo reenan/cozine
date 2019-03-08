@@ -29,6 +29,16 @@
     .content {
       padding: $small-spacing;
       
+      .tags {
+        margin-left: -$extra-small-spacing;
+        margin-top: -$extra-small-spacing;
+  
+        .tag {
+          margin-left: $extra-small-spacing;
+          margin-top: $extra-small-spacing;
+        }
+      }
+
       .name {
         font-size: 18px;
         margin: 0 0 10px 0;
@@ -41,43 +51,6 @@
         font-size: 14px;
         color: $medium-gray;
         line-height: 1.5;
-      }
-      
-      .tags {
-        span {
-          font-size: 10px;
-          text-transform: uppercase;
-          border-radius: 15px;
-          padding: 5px 10px;
-          
-          & + span {
-            margin-left: $extra-small-spacing;
-          }
-          
-          &.veggie {
-            background-color: #b9dec5;
-          }
-          
-          &.fast {
-            background-color: #dac686;
-          }
-          
-          &.cheap {
-            background-color: #ebd1ef;
-          }
-          
-          &.gourmet {
-            background-color: #cca219;
-          }
-          
-          &.easy {
-            background-color: #9ba6e5;
-          }
-          
-          &.untagged {
-            background-color: $soft-gray;
-          }
-        }
       }
       
       .actions {
