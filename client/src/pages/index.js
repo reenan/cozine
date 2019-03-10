@@ -6,9 +6,9 @@ import Profile from './Profile/Profile';
 
 
 export {
-    Home,
-    Schedule,
-    Recipes,
-    Recipe,
-    Profile,
+  Home,
+  Schedule,
+  Recipes,
+  Recipe,
+  Profile,
 }
