@@ -5,4 +5,9 @@ body {
     font-family: 'Roboto', sans-serif;
     min-width: $phone-width;
     background-color: $light-gray;
+
+    a, a:-webkit-any-link, a:visited, a:focus, a:hover, a:active {
+        text-decoration: none;
+        color: inherit;
+    }
 }

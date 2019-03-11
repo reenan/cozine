@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Line } from 'rc-progress';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Icon, Tag } from '../shared';
 
 import lasanha from '../../resources/images/lasanha.jpg';
@@ -131,6 +131,11 @@ class Recipe extends Component {
           </ul>
 
           <p className='description'>{recipe.description ? recipe.description : 'Sem descrição'}</p>
+
+          <Link to='/preparation' className='preparation'>
+              <Icon icon='mitten' />
+              <p>Ver modo de preparo</p>
+          </Link>
 
           <div className='ingredients'>
             <p className='subtitle'>Ingredientes</p>

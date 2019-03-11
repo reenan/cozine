@@ -12,6 +12,7 @@ export default class TopBar extends Component {
                 <NavLink to='/recipes'>Recipes</NavLink>
                 <NavLink to='/recipe'>Recipe</NavLink>
                 <NavLink to='/profile'>Profile</NavLink>
+                <NavLink to='/preparation'>Preparation</NavLink>
             </div>
         )
     }

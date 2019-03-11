@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Profile.scss';
 
-import { Icon, Input, IconButton} from '../shared';
+import { Input, IconButton} from '../shared';
 
 export default class Profile extends Component {
 

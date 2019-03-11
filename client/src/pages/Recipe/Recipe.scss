@@ -67,6 +67,32 @@
       line-height: 1.5;
     }
 
+    .preparation {
+      @include transition(color 400ms, background-color 400ms);
+      display: block;
+      margin: $medium-spacing 0;
+      text-decoration: none;
+
+      &:hover {
+        color: $main-color;
+      }
+
+      span, p {
+        @include vertical-align(middle);
+      }
+
+      p {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .icon {
+        font-size: 33px;
+        margin-right: $small-spacing;
+      }
+    }
+
     .ingredients {
       margin: $medium-spacing 0;
 

@@ -1,0 +1,51 @@
+@import '../../resources/_variables.scss';
+@import '../../resources/_mixins.scss';
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+.preparation {
+  color: $dark-text;
+  position: relative;
+  overflow: hidden;
+
+  .image {
+    @include aspect-ratio(16, 9);
+    background-size: cover;
+    background-position: center center;
+
+    &:after {
+      @include absolute-fill();
+      content: '';
+      background-color: rgba($dark-text, 0.65);
+    }
+
+    .title {
+      @include transform(translateY(-50%));
+      color: $soft-gray;
+      position: absolute;
+      top: 50%;
+      width: 90%;
+      max-height: 90%;
+      left: 5%;
+      z-index: 2;
+      margin: 0;
+      font-size: 26px;
+      text-align: center;
+      text-transform: uppercase;
+      overflow: hidden;
+      text-shadow: 0px 2px 3px rgba($dark-text, 0.5);
+    }
+  }
+
+  .content {
+    padding: $small-spacing;
+
+    .how {
+      text-align: center;
+      font-family: 'Dancing Script';
+      font-size: 33px;
+      margin: 0;
+      color: $main-color;
+    }
+  }
+
+}
