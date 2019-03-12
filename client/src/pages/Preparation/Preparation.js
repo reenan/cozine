@@ -47,17 +47,15 @@ export default class Preparation extends Component {
         ]},
       ],
       preparationSteps: [
-        { type: 'text',
-          duration: '15 minutos',
+        { duration: '15 minutos',
           description: 'Cozinhe o brócolis e escorra.' },
-        { type: 'image',
-          description: 'Pique bem ele.',
+        { description: 'Pique bem ele.',
           duration: '10 minutos',
-          image: brocolisPicado },
-        { type: 'image',
-          description: 'Em uma panela aqueça o azeite, frite o alho, acrescente o brócolis picadinho, adicione sal a gosto.',
+          images: [brocolisPicado] },
+        { description: 'Em uma panela aqueça o azeite, frite o alho, acrescente o brócolis picadinho, adicione sal a gosto.',
           duration: '10 minutos',
-          image: refogando },
+          images: [refogando, brocolisPicado],
+          videos: [refogando, brocolisPicado] },
         { type: 'text', description: 'Reserve.' },
         { type: 'text', description: 'À parte faça o molho branco.' },
         { type: 'text', description: 'Bata no liquidificador o leite, a farinha de trigo e o sal.' },
@@ -89,17 +87,9 @@ export default class Preparation extends Component {
             <ul>
               {
                 recipe.preparationSteps.map((step, index) => {
-                  if (step.type === 'text') {
-                    return (
-                      <TextStep key={index} number={index + 1} step={step} />
-                    )
-                  } else if (step.type === 'image') {
-                    return (
-                      <ImageStep key={index} number={index + 1} step={step} />
-                    )
-                  }
-
-                  return null;
+                  return (
+                    <Step key={index} number={index + 1} step={step} />
+                  )
                 })
               }
             </ul>
@@ -110,43 +100,37 @@ export default class Preparation extends Component {
   }
 }
 
-const TextStep = ({ number, step }) => {
+const Step = ({ number, step }) => {
   return (
-    <li className='text-step'>
+    <li className='step'>
       <span className='number'>{number}.</span>
       <span className='text'>{step.description}</span>
 
-      {
-        step.duration ?
-          <div className='duration'>
-            <Icon icon='clock' />
-            <span className='time'>{step.duration}</span>
-          </div> : null
-      }
-    </li>
-  )
-}
-
-const ImageStep = ({ number, step }) => {
-  return (
-    <li className='image-step'>
-      
-      <div>    
-        <span className='number'>{number}.</span>
-        <span className='text'>{step.description}</span>
-
+      <div className='extra'>
         {
           step.duration ?
-            <div className='duration'>
+            <div>
               <Icon icon='clock' />
-              <span className='time'>{step.duration}</span>
+              <span>{step.duration}</span>
+            </div> : null
+        }
+
+        {
+          step.images ?
+            <div>
+              <Icon icon='image' />
+              <span>+{step.images.length}</span>
+            </div> : null
+        }
+
+        {
+          step.videos ?
+            <div>
+              <Icon icon='play' />
+              <span>+{step.videos.length}</span>
             </div> : null
         }
       </div>
-      
-      <div className='image'
-        style={{ backgroundImage: `url(${step.image})`}} />
-
     </li>
   )
 }

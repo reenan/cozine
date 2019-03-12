@@ -6,18 +6,18 @@
   color: $dark-text;
   position: relative;
   overflow: hidden;
-
+  
   > .image {
     @include aspect-ratio(16, 9);
     background-size: cover;
     background-position: center center;
-
+    
     &:after {
       @include absolute-fill();
       content: '';
       background-color: rgba($dark-text, 0.65);
     }
-
+    
     .title {
       @include transform(translateY(-50%));
       color: $soft-gray;
@@ -35,10 +35,10 @@
       text-shadow: 0px 2px 3px rgba($dark-text, 0.5);
     }
   }
-
+  
   .content {
     padding: $small-spacing;
-
+    
     .how {
       text-align: center;
       font-family: 'Dancing Script';
@@ -46,48 +46,57 @@
       margin: 0;
       color: $main-color;
     }
-
+    
     .steps {
       margin: $medium-spacing 0;
       font-size: 15px;
-
-      li + li {
-        margin-top: $small-spacing;
-      }
-
-      span.number {
-        @include vertical-align(middle);
-        color: $main-color;
-        margin-right: $extra-small-spacing;
-      }
-
-      span.text {
-        font-weight: 100;
-      }
-
-      .duration {
-        margin: $extra-small-spacing $small-spacing;
-        opacity: 0.7;
-        font-size: 12px;
-
-        .icon {
+      
+      .step {
+        padding: $extra-small-spacing 0;
+        
+        + .step {
+          margin-top: $extra-small-spacing;
+        }
+        
+        span.number {
+          @include vertical-align(middle);
+          color: $main-color;
           margin-right: $extra-small-spacing;
         }
-      }
-
-      .image-step {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        grid-column-gap: $small-spacing;
-        grid-row-gap: $small-spacing;
-
-        .image {
-          @include aspect-ratio(1, 1);
-          background-size: cover;
-          background-position: center center;
+        
+        span.text {
+          font-weight: 100;
+        }
+        
+        .extra {
+          margin: $extra-small-spacing $small-spacing;
+          
+          > div {
+            @include transition(background-color 400ms);
+            @include vertical-align(middle);
+            cursor: pointer;
+            padding: $extra-small-spacing $small-spacing;
+            border: 1px solid $light-blue;
+            border-radius: 15px;
+            margin-top: $extra-small-spacing;
+            
+            opacity: 0.7;
+            font-size: 12px;
+            
+            .icon {
+              margin-right: $extra-small-spacing;
+            }
+            
+            &:hover {
+              background-color: $soft-gray;
+            }
+            
+            & + div {
+              margin-left: $small-spacing;
+            }
+          }
         }
       }
     }
   }
-
 }
