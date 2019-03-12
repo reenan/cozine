@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
 
-  .image {
+  > .image {
     @include aspect-ratio(16, 9);
     background-size: cover;
     background-position: center center;
@@ -45,6 +45,48 @@
       font-size: 33px;
       margin: 0;
       color: $main-color;
+    }
+
+    .steps {
+      margin: $medium-spacing 0;
+      font-size: 15px;
+
+      li + li {
+        margin-top: $small-spacing;
+      }
+
+      span.number {
+        @include vertical-align(middle);
+        color: $main-color;
+        margin-right: $extra-small-spacing;
+      }
+
+      span.text {
+        font-weight: 100;
+      }
+
+      .duration {
+        margin: $extra-small-spacing $small-spacing;
+        opacity: 0.7;
+        font-size: 12px;
+
+        .icon {
+          margin-right: $extra-small-spacing;
+        }
+      }
+
+      .image-step {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-column-gap: $small-spacing;
+        grid-row-gap: $small-spacing;
+
+        .image {
+          @include aspect-ratio(1, 1);
+          background-size: cover;
+          background-position: center center;
+        }
+      }
     }
   }
 
