@@ -9,8 +9,7 @@
   
   > .image {
     @include aspect-ratio(16, 9);
-    background-size: cover;
-    background-position: center center;
+    @include center-background();
     
     &:after {
       @include absolute-fill();
@@ -36,66 +35,98 @@
     }
   }
   
-  .content {
+  > .content {
     padding: $small-spacing;
     
-    .how {
+    p.how {
       text-align: center;
       font-family: 'Dancing Script';
       font-size: 33px;
       margin: 0;
       color: $main-color;
     }
-    
-    .steps {
-      margin: $medium-spacing 0;
-      font-size: 15px;
+  }
+  
+
+  .steps {
+    margin: $medium-spacing 0;
+    font-size: 15px;
+
+    .tag {
+      @include vertical-align(middle);
+      padding: $extra-small-spacing $small-spacing;
+      border: 1px solid $light-blue;
+      border-radius: 15px;
+      opacity: 0.7;
+      font-size: 12px;
       
-      .step {
-        padding: $extra-small-spacing 0;
-        
-        + .step {
-          margin-top: $extra-small-spacing;
-        }
-        
-        span.number {
-          @include vertical-align(middle);
-          color: $main-color;
-          margin-right: $extra-small-spacing;
-        }
-        
-        span.text {
-          font-weight: 100;
-        }
-        
-        .extra {
-          margin: $extra-small-spacing $small-spacing;
-          
-          > div {
-            @include transition(background-color 400ms);
-            @include vertical-align(middle);
-            cursor: pointer;
-            padding: $extra-small-spacing $small-spacing;
-            border: 1px solid $light-blue;
-            border-radius: 15px;
-            margin-top: $extra-small-spacing;
-            
+      .icon {
+        margin-right: $extra-small-spacing;
+      }
+
+      & + .tag {
+        margin-left: $small-spacing;
+      }
+    }
+    
+    .step {
+      padding: $extra-small-spacing $small-spacing;
+      margin-top: $small-spacing;
+
+      &.active {
+        padding: $small-spacing 0;
+        background-color: $soft-gray;
+
+        .content {
+          padding: 0 $small-spacing;
+
+          span.number, span.text {
+            font-size: 22px;
+            font-weight: 100;
+          }
+
+          .duration {
             opacity: 0.7;
-            font-size: 12px;
-            
+            margin-top: $extra-small-spacing;
             .icon {
               margin-right: $extra-small-spacing;
             }
-            
-            &:hover {
-              background-color: $soft-gray;
+
+            span {
+              font-size: 15px;
             }
+          }
+
+          .images {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: $small-spacing;
+            margin-top: $small-spacing;
             
-            & + div {
-              margin-left: $small-spacing;
+            .image {
+              @include aspect-ratio(1, 1);
+              @include center-background();
             }
           }
         }
+      }
+      
+      span.number, span.text {
+        @include transition(font 400ms);
+      }
+
+      span.number {
+        color: $main-color;
+        margin-right: $extra-small-spacing;
+      }
+      
+      span.text {
+        font-weight: 100;
+        margin-bottom: $extra-small-spacing;
+      }
+      
+      .inactive-extra {
+        margin: $extra-small-spacing 0;
       }
     }
   }

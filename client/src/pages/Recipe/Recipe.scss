@@ -7,8 +7,7 @@
 
   .image {
     @include aspect-ratio(16, 9);
-    background-size: cover;
-    background-position: center center;
+    @include center-background();
 
     &:after {
       @include absolute-fill();

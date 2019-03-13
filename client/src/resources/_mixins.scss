@@ -14,7 +14,6 @@
 	left: $left;
 }
 
-
 @mixin transition($args...) {
 	-webkit-transition: $args;
 	-moz-transition: $args;
@@ -55,7 +54,11 @@
 	> div {
 		@include absolute-fill();
 	}
+}
 
+@mixin center-background() {
+	background-size: cover;
+	background-position: center center;
 }
 
 @mixin focal-point-x($x) {

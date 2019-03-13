@@ -7,7 +7,30 @@ import { Icon } from '../shared';
 
 import './Preparation.scss';
 export default class Preparation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeStep: 1
+    }
+  }
+
+  previousStep = () => {
+    const { activeStep } = this.state;
+    this.setActiveStep(activeStep - 1);
+  }
+  
+  nextStep = () => {
+    const { activeStep } = this.state;
+    this.setActiveStep(activeStep + 1);
+  }
+
+  setActiveStep = (step) => {
+    this.setState({activeStep: step});
+  }
+
   render() {
+    const { activeStep } = this.state;
     const recipe = {
       name: 'Lasanha de brócolis',
       image: lasanha,
@@ -82,22 +105,73 @@ export default class Preparation extends Component {
           <p className='how'>
             Como preparar?
           </p>
+        </div>
 
-          <div className='steps'>
-            <ul>
-              {
-                recipe.preparationSteps.map((step, index) => {
-                  return (
-                    <Step key={index} number={index + 1} step={step} />
+        <div className='steps'>
+          <ul>
+            {
+              recipe.preparationSteps.map((step, index) => {
+                
+                return (
+                  activeStep === index ?
+                    <ActiveStep
+                      key={index}
+                      number={index + 1}
+                      step={step} /> :
+                  
+                    <Step
+                      key={index}
+                      number={index + 1}
+                      step={step} />
                   )
-                })
-              }
-            </ul>
-          </div>
+              })
+            }
+          </ul>
         </div>
       </div>
     )
   }
+}
+
+const ActiveStep = ({ number, step }) => {
+  return (
+    <li className='step active'>
+      <div className='content'>  
+        <span className='number'>Passo {number}.</span>
+        <span className='text'>{step.description}</span>
+
+        {
+          step.duration ?
+            <div className='duration'>
+              <Icon icon='clock' />
+              <span>{step.duration}</span>
+            </div> : null
+        } 
+
+            {
+              step.images ?
+                <div className='images'>
+                  {
+                    step.images.map((image, index) => {
+                      return   (
+                        <div key={index} className='image'
+                          style={{backgroundImage: `url(${image})`}} />
+                      )
+                    })
+                  }
+                </div> : null
+            }
+
+            {/* 
+              step.videos ?
+                <div>
+                  <Icon icon='play' />
+                  <span>+ {step.videos.length}</span>
+                </div> : null
+             */}
+        </div>
+    </li>
+  )
 }
 
 const Step = ({ number, step }) => {
@@ -106,10 +180,10 @@ const Step = ({ number, step }) => {
       <span className='number'>{number}.</span>
       <span className='text'>{step.description}</span>
 
-      <div className='extra'>
+      <div className='inactive-extra'>
         {
           step.duration ?
-            <div>
+            <div className='tag'>
               <Icon icon='clock' />
               <span>{step.duration}</span>
             </div> : null
@@ -117,17 +191,17 @@ const Step = ({ number, step }) => {
 
         {
           step.images ?
-            <div>
+            <div className='tag'>
               <Icon icon='image' />
-              <span>+{step.images.length}</span>
+              <span>+ {step.images.length}</span>
             </div> : null
         }
 
         {
           step.videos ?
-            <div>
+            <div className='tag'>
               <Icon icon='play' />
-              <span>+{step.videos.length}</span>
+              <span>+ {step.videos.length}</span>
             </div> : null
         }
       </div>
