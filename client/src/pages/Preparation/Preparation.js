@@ -161,14 +161,6 @@ const ActiveStep = ({ number, step }) => {
                   }
                 </div> : null
             }
-
-            {/* 
-              step.videos ?
-                <div>
-                  <Icon icon='play' />
-                  <span>+ {step.videos.length}</span>
-                </div> : null
-             */}
         </div>
     </li>
   )
