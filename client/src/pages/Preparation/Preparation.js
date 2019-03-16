@@ -133,6 +133,7 @@ export default class Preparation extends Component {
   }
 }
 
+// No idea how to style this
 const ActiveStep = ({ number, step }) => {
   return (
     <li className='step active'>
