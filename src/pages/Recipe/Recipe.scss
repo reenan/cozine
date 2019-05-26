@@ -1,63 +1,82 @@
 @import '../../resources/_variables.scss';
 @import '../../resources/_mixins.scss';
 
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
 .recipe {
   position: relative;
   color: $dark-text;
-
+  
   .image {
     @include aspect-ratio(16, 9);
     @include center-background();
-
+    
     &:after {
       @include absolute-fill();
       content: '';
-      background-color: rgba($dark-text, 0.25);
+      background-color: rgba($dark-text, 0.65);
+    }
+    
+    .title {
+      @include transform(translateY(-50%));
+      color: $soft-gray;
+      position: absolute;
+      top: 50%;
+      width: 90%;
+      max-height: 90%;
+      left: 5%;
+      z-index: 2;
+      margin: 0;
+      font-size: 26px;
+      text-align: center;
+      text-transform: uppercase;
+      overflow: hidden;
+      text-shadow: 0px 2px 3px rgba($dark-text, 0.5);
     }
   }
-
+  
   .content {
     padding: $medium-spacing $small-spacing;
-
+    
     .title {
       font-size: 24px;
       margin: 0 0 $small-spacing 0;
     }
-
+    
     .subtitle {
       font-size: 18px;
       margin: 0 0 $small-spacing 0;
     }
-
+    
     .tags {
       margin-bottom: $small-spacing;
       margin-left: -$extra-small-spacing;
       margin-top: -$extra-small-spacing;
-
+      
       .tag {
         margin-left: $extra-small-spacing;
         margin-top: $extra-small-spacing;
       }
     }
-
+    
     .info {
-
+      
       li {
         @include vertical-align(middle);
         color: $medium-gray;
         font-weight: 100;
         font-size: 13px;
-
+        
         .icon {
           margin-right: $extra-small-spacing;
         }
-
+        
         & + li {
           margin-left: $medium-spacing;
         }
       }
     }
-
+    
     .description {
       letter-spacing: 0.5px;
       font-weight: 100;
@@ -65,42 +84,42 @@
       font-size: 14px;
       line-height: 1.5;
     }
-
+    
     .preparation {
       @include transition(color 400ms, background-color 400ms);
       display: block;
       margin: $medium-spacing 0;
       text-decoration: none;
-
+      
       &:hover {
         color: $main-color;
       }
-
+      
       span, p {
         @include vertical-align(middle);
       }
-
+      
       p {
         text-transform: uppercase;
         font-size: 14px;
         margin: 0;
       }
-
+      
       .icon {
         font-size: 33px;
         margin-right: $small-spacing;
       }
     }
-
+    
     .ingredients {
       margin: $medium-spacing 0;
-
+      
       ul {
         li {
           span {
             text-transform: lowercase;
             font-size: 13px;
-
+            
             + span {
               margin-left: $extra-small-spacing;
             }
@@ -111,55 +130,55 @@
         }
       }
     }
-
+    
     .nutritional-values {
-
+      
       .nutrients {
         display: grid;
         grid-template-columns: 6fr 6fr;
         grid-gap: $small-spacing;
-
+        
         .rc-progress-line-path {
           stroke: $success-color;
-
+          
           &:nth-of-type(3) {
             stroke: $main-color;
           }
         }
-
+        
         > li {
-
+          
           &.with-inner {
             grid-column-start: 1;
             grid-column-end: 3;
-
+            
             ul {
               margin-top: $extra-small-spacing;
               display: grid;
               grid-gap: $extra-small-spacing;
               grid-template-columns: repeat(3, 1fr);
-
+              
               > li {
                 padding: $extra-small-spacing $small-spacing;
                 background-color: $soft-gray;
                 position: relative;
                 border-radius: 15px;
                 overflow: hidden;
-
+                
                 .progress-bar {
                   @include absolute-fill();
                   background-color: rgba($success-color, 0.3);
                   z-index: 1;
                 }
-
+                
                 span {
                   position: relative;
                   z-index: 2;
                   font-size: 10px;
                 }
-
+                
                 &.trans {
-
+                  
                   .progress-bar {
                     background-color: rgba($main-color, 0.3);
                   }
@@ -167,24 +186,125 @@
               }
             }
           }
-
+          
           svg {
             @include vertical-align(top);
             margin-top: $extra-small-spacing;
           }
-
+          
           span {
             @include vertical-align(middle);
           }
-
+          
           .name {
             font-size: 13px;
             margin-right: $extra-small-spacing;
           }
-
+          
           .amount {
             font-size: 12px;
           }
+        }
+      }
+    }
+  }
+  
+  .preparation {
+    color: $dark-text;
+    position: relative;
+    overflow: hidden;
+    
+    > .content {
+      padding: $small-spacing;
+      
+      p.how {
+        text-align: center;
+        font-family: 'Dancing Script';
+        font-size: 33px;
+        margin: 0;
+        color: $main-color;
+      }
+    }
+    
+    .steps {
+      margin: $medium-spacing 0;
+      font-size: 15px;
+      
+      .tag {
+        @include vertical-align(middle);
+        padding: $extra-small-spacing $small-spacing;
+        border: 1px solid $light-blue;
+        border-radius: 15px;
+        opacity: 0.7;
+        font-size: 12px;
+        
+        .icon {
+          margin-right: $extra-small-spacing;
+        }
+        
+        & + .tag {
+          margin-left: $small-spacing;
+        }
+      }
+      
+      .step {
+        padding: $extra-small-spacing $small-spacing;
+        margin-top: $small-spacing;
+        
+        &.active {
+          padding: $small-spacing 0;
+          background-color: $soft-gray;
+          
+          .content {
+            padding: 0 $small-spacing;
+            
+            span.number, span.text {
+              font-size: 22px;
+              font-weight: 100;
+            }
+            
+            .duration {
+              opacity: 0.7;
+              margin-top: $extra-small-spacing;
+              .icon {
+                margin-right: $extra-small-spacing;
+              }
+              
+              span {
+                font-size: 15px;
+              }
+            }
+            
+            .images {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              grid-gap: $small-spacing;
+              margin-top: $small-spacing;
+              
+              .image {
+                @include aspect-ratio(1, 1);
+                @include center-background();
+              }
+            }
+          }
+        }
+        
+        span.number, span.text {
+          @include transition(font 400ms);
+        }
+        
+        span.number {
+          color: $main-color;
+          margin-right: $extra-small-spacing;
+        }
+        
+        span.text {
+          font-weight: 100;
+          margin-bottom: $extra-small-spacing;
+        }
+        
+        .inactive-extra {
+          margin: $extra-small-spacing 0;
         }
       }
     }

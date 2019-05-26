@@ -4,7 +4,6 @@
 $sidebarSize: 150px + $medium-spacing * 2;
 
 .menu {
-  @include position-fill();
   @include transition(background 400ms);
   position: fixed;
   padding: $small-spacing;
@@ -46,6 +45,7 @@ $sidebarSize: 150px + $medium-spacing * 2;
   }
 
   &.open {
+    @include position-fill();
     > .button {
       left: $sidebarSize;
     }
