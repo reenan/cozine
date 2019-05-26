@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router';
 import { Icon } from '../../shared';
 import './Calendar.scss';
 
@@ -157,4 +156,4 @@ const WeekDays = ({ weekDays }) => {
   )
 }
 
-export default withRouter(Calendar)
+export default Calendar
