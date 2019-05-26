@@ -1,5 +1,9 @@
 @mixin absolute-fill($distance: 0px) {
 	position: absolute;
+	@include position-fill($distance);
+}
+
+@mixin position-fill($distance: 0px) {
 	top: $distance;
 	bottom: $distance;
 	left: $distance;

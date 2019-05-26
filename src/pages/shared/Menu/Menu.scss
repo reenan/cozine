@@ -1,0 +1,59 @@
+@import '../../../resources/_variables.scss';
+@import '../../../resources/_mixins.scss';
+
+$sidebarSize: 150px + $medium-spacing * 2;
+
+.menu {
+  @include position-fill();
+  @include transition(background 400ms);
+  position: fixed;
+  padding: $small-spacing;
+  z-index: 5;
+
+  > .button {
+    @include transition(left 400ms);
+    @include box-shadow(0 0 8px 3px, rgba(black, 0.1));
+    position: relative;
+    left: 0;
+    background: white;
+  }
+
+  .side-bar {
+    @include transition(left 400ms);
+    @include box-shadow(5px 0 20px -10px, rgba(black, 0.1));
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    left: -$sidebarSize;
+    background-color: $light-gray;
+    color: $dark-text;
+    padding: $small-spacing $medium-spacing;
+    
+    .items {
+      a {
+        display: block;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 20px 0;
+
+        .icon {
+          margin-right: $small-spacing;
+          color: $main-color;
+        }
+      }
+    }
+  }
+
+  &.open {
+    > .button {
+      left: $sidebarSize;
+    }
+
+    background: rgba(black, 0.1);
+
+    .side-bar {
+      left: 0;
+    }
+  }
+}

@@ -10,18 +10,20 @@ class Button extends Component {
   static propsTypes = {
     className: PropTypes.string,
     size: PropTypes.number,
+    onClick: PropTypes.func
   }
 
   static defaultProps = {
     className: '',
     size: 0,
+    onClick: () => {}
   }
 
   render() {
-    const { children, className, style } = this.props;
+    const { children, className, style, onClick } = this.props;
 
     return (
-      <div className={`button ${className}`} style={style}>
+      <div className={`button ${className}`} style={style} onClick={onClick}>
         {children}
       </div>
     )
@@ -41,7 +43,7 @@ class IconButton extends Button {
     }
 
     return (
-      <Button className={`btn-icon ${className}`} style={style}>
+      <Button {...this.props} style={style} className={`btn-icon ${className}`}>
         <Icon size={size} icon={icon} />
       </Button>
     )

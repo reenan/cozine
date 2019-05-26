@@ -19,10 +19,10 @@
       font-size: 22px;
     }
 
-    &:hover {
+    /* &:hover {
       color: $main-color;
       background-color: rgba($soft-gray, 0.5);
-    }
+    } */
     
     &.active {
       color: $main-color;
@@ -36,9 +36,9 @@
       font-size: 15px;
       text-transform: uppercase;
 
-      &:hover {
+     /*  &:hover {
         color: $main-color;
-      }
+      } */
     }
   }
 
