@@ -31,6 +31,12 @@
 	box-shadow: $size $color;
 }
 
+@mixin no-box-shadow() {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 @mixin text-overflow($type) {
 	white-space: nowrap;
 	text-overflow: $type;

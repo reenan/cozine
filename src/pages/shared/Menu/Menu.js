@@ -11,39 +11,50 @@ export default class Menu extends Component {
     super(props)
 
     this.state = {
-      open: true
+      open: true,
+      closing: false
     }
   }
 
-  toggleSideBar = (e) => {
+  openSidebar = (e) => {
     e.preventDefault()
     e.stopPropagation()
 
     this.setState({
-      open: !this.state.open
+      open: true
     })
   }
 
-  closeSidebar = () => {
-    this.setState({
-      open: false
-    })
-  }
-
-  preventDefault = (e) => {
+  closeSidebar = (e) => {
     e.preventDefault()
     e.stopPropagation()
+
+    this.setState({
+      closing: true
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          closing: false,
+          open: false,
+        })
+      }, 600)
+    })
   }
 
   render() {
-    const { open } = this.state;
+    const { open, closing } = this.state;
 
     return (
-      <div onClick={this.closeSidebar} className={`menu ${open ? 'open' : ''}`}> 
+      <div onClick={this.closeSidebar} className={`menu ${closing ? 'closing' : ''} ${open ? 'open' : ''}`}> 
 
-        <IconButton size={14} icon={`${open ? 'times' : 'bars'}`} onClick={this.toggleSideBar} />
+        {
+          open ?
+          <IconButton size={14} icon='times' onClick={this.closeSidebar} /> :
+          <IconButton size={14} icon='bars' onClick={this.openSidebar} />
+        }
+        
 
-        <div className='side-bar' onClick={this.preventDefault}>
+        <div className='side-bar'>
           <div className='items' onClick={this.closeSidebar}>
             <NavLink to='/schedule'>
               <Icon icon='calendar-day'/>

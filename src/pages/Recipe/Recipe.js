@@ -41,13 +41,13 @@ const NUTRIENT_MAP = {
   potassium: 'Potássio',
 }
 
-const recipe = {
+const RECIPE = {
   name: 'Lasanha de brócolis',
   image: lasanha,
   fav: true,
   time: '1 hora',
   tags: ['gourmet'],
-  description: 'Você que ama massas, não pode perder essa receita de lasanha de brócolis e molho branco! Fica deliciosa e é superfácil de fazer!',
+  description: 'Você que ama massas, não pode perder essa receita de lasanha de brócolis e molho branco! Fica deliciosa e é superfácil de fazer.',
   serving: {
     type: 'people',
     amount: 3
@@ -131,16 +131,16 @@ class Recipe extends Component {
   render() {
     const { activeStep } = this.state;
 
-    let serving = recipe.serving.amount === 1 ?
-      SERVING_TYPE_MAP[recipe.serving.type].singular :
-      SERVING_TYPE_MAP[recipe.serving.type].plural;
+    let serving = RECIPE.serving.amount === 1 ?
+      SERVING_TYPE_MAP[RECIPE.serving.type].singular :
+      SERVING_TYPE_MAP[RECIPE.serving.type].plural;
 
     return (
       <div className='recipe'>
         <div className='image'
-          style={{backgroundImage: `url(${recipe.image})`}}>
+          style={{backgroundImage: `url(${RECIPE.image})`}}>
           <p className='title'>
-            {recipe.name}
+            {RECIPE.name}
           </p>
         </div>
 
@@ -148,8 +148,8 @@ class Recipe extends Component {
 
           <div className='tags'>
             {
-              recipe.tags.length ? 
-                recipe.tags.map((tag, index) => {
+              RECIPE.tags.length ? 
+                RECIPE.tags.map((tag, index) => {
                   return (
                     <Tag key={index} tag={tag} />
                   )
@@ -159,16 +159,16 @@ class Recipe extends Component {
 
           <ul className='info'>
             <li className='serving'>
-              <Icon icon={SERVING_ICON_MAP[recipe.serving.type]} />
-              <span>{recipe.serving.amount} {serving}</span>
+              <Icon icon={SERVING_ICON_MAP[RECIPE.serving.type]} />
+              <span>{RECIPE.serving.amount} {serving}</span>
             </li>
             <li className='time'>
               <Icon icon='clock' />
-              <span>{recipe.time}</span>
+              <span>{RECIPE.time}</span>
             </li>
           </ul>
 
-          <p className='description'>{recipe.description ? recipe.description : 'Sem descrição'}</p>
+          <p className='description'>{RECIPE.description ? RECIPE.description : 'Sem descrição'}</p>
 
           <Link to='/preparation' className='preparation'>
               <Icon icon='mitten' />
@@ -179,7 +179,7 @@ class Recipe extends Component {
             <p className='subtitle'>Ingredientes</p>
             <ul>
               {
-                recipe.ingredients.map((ingredient, index) => {
+                RECIPE.ingredients.map((ingredient, index) => {
                   return (
                     <li key={index}>
                       <span>{ingredient.amount}</span>
@@ -195,7 +195,7 @@ class Recipe extends Component {
             <p className='subtitle'>Valores nutricionais</p>
             <ul className='nutrients'>
               {
-                recipe.nutrients.map((nutrient, i) => {
+                RECIPE.nutrients.map((nutrient, i) => {
                   return (
                     <NutrientItem key={i} nutrient={nutrient} />
                   )
@@ -217,7 +217,7 @@ class Recipe extends Component {
           <div className='steps'>
             <ul>
               {
-                recipe.preparationSteps.map((step, index) => {
+                RECIPE.preparationSteps.map((step, index) => {
                   
                   return (
                     activeStep === index ?

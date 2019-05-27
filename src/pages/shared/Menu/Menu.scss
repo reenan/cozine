@@ -4,13 +4,15 @@
 $sidebarSize: 150px + $medium-spacing * 2;
 
 .menu {
-  @include transition(background 400ms);
+  @include transition(background 600ms);
   position: fixed;
   padding: $small-spacing;
   z-index: 5;
 
+  * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  
   > .button {
-    @include transition(left 400ms);
+    @include transition(left 600ms);
     @include box-shadow(0 0 8px 3px, rgba(black, 0.1));
     position: relative;
     left: 0;
@@ -18,8 +20,7 @@ $sidebarSize: 150px + $medium-spacing * 2;
   }
 
   .side-bar {
-    @include transition(left 400ms);
-    @include box-shadow(5px 0 20px -10px, rgba(black, 0.1));
+    @include transition(left 600ms, box-shadow 400ms);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -46,14 +47,29 @@ $sidebarSize: 150px + $medium-spacing * 2;
 
   &.open {
     @include position-fill();
+    background: rgba(black, 0.1);
+    
     > .button {
       left: $sidebarSize;
     }
 
-    background: rgba(black, 0.1);
-
     .side-bar {
+      @include box-shadow(5px 0 20px -10px, rgba(black, 0.1));
       left: 0;
     }
+  }
+
+  &.closing {
+    background: none;
+
+    > .button {
+      left: 0;
+    }
+
+    .side-bar {
+      @include no-box-shadow();
+      left: -$sidebarSize;
+    }
+
   }
 }
